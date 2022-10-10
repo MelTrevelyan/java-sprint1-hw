@@ -10,7 +10,10 @@ public class StepTracker {
             monthToData[i] = new MonthData();
         }
     }
-
+    /* @param month - месяц, выбранный пользователем; @param day - день месяца, указанный пользователем;
+    @param steps - введенное количество шагов.
+    Сохраняем значение шагов в массиве.
+    */
     public void saveStepsInDay(int month, int day, int steps) {
         if (steps < 0) {
             System.out.println("Количество шагов не может быть отрицательным.");
@@ -39,7 +42,9 @@ public class StepTracker {
             System.out.println("день " + (i + 1) + ": " + monthToData[month].dayData[i] + ", ");
         }
     }
-
+    /* Сравниваем количество шагов каждого дня одного месяца.
+    @return максимальное количество шагов за день в выбранном месяце.
+     */
     public int getMaxSteps(int month) {
         int max = 0;
         for (int i = 0; i < monthToData[month].dayData.length; i++) {
@@ -49,7 +54,10 @@ public class StepTracker {
         }
         return monthToData[month].dayData[max];
     }
-
+    /* Получаем сумму шагов за каждый день в выбранном месяце
+    Делим сумму на количество дней (30)
+    @return среднее значение шагов за выбранный месяц
+     */
     public double getAverageSteps(int month) {
         double sum = 0;
         for (int i = 0; i < monthToData[month].dayData.length; i++) {
