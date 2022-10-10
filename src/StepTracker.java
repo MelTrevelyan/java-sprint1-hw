@@ -10,6 +10,7 @@ public class StepTracker {
             monthToData[i] = new MonthData();
         }
     }
+
     public void saveStepsInDay(int month, int day, int steps) {
         if (steps < 0) {
             System.out.println("Количество шагов не может быть отрицательным.");
@@ -92,11 +93,12 @@ public class StepTracker {
         }
         return maxSeries;
     }
+
+
+    class MonthData {
+        int[] dayData = new int[30];
+    }
 }
 
 
-class MonthData {
-    int[] dayData = new int[30];
-
-}
 
