@@ -12,7 +12,11 @@ public class StepTracker {
     }
     public void saveStepsInDay(int month, int day, int steps) {
         if (steps < 0) {
-            System.out.println("Количество шагов не может быть отрицательным.") ;
+            System.out.println("Количество шагов не может быть отрицательным.");
+        } else if (month < 0) {
+            System.out.println("Номер месяца не может быть отрицательным.");
+        } else if (day <= 0) {
+            System.out.println("Номер дня должен быть больше нуля");
         } else {
             monthToData[month].dayData[day - 1] = steps;
             System.out.println("Ваши данные успешно сохранены");

@@ -8,9 +8,6 @@ public class Main {
         int userInput = scanner.nextInt();
 
         while (userInput != 0) {
-
-            printMenu();
-            userInput = scanner.nextInt();
             if (userInput == 1) {
                 System.out.println("Введите месяц, за который хотите ввести количество шагов. 0 - Январь," +
                         " 1 - Февраль ... 11 - Декабрь");
@@ -20,6 +17,8 @@ public class Main {
                 System.out.println("Введите количество шагов");
                 int userSteps = scanner.nextInt();
                 tracker.saveStepsInDay(chosenMonth, chosenDay, userSteps);
+                printMenu();
+                userInput = scanner.nextInt();
             } else if (userInput == 2) {
                 System.out.println("За какой месяц вы хотите получить статистику? 0 - январь, 1 - Февраль ..." +
                         " 11 - Декабрь");
@@ -31,12 +30,18 @@ public class Main {
                 System.out.println("Пройденная дистанция (в км): " + tracker.getDistance(monthStatistics));
                 System.out.println("Количество сожжённых килокалорий: " + tracker.getKilocalories(monthStatistics));
                 System.out.println("Ваша лучшая серия: " + tracker.getBestSeries(monthStatistics));
+                printMenu();
+                userInput = scanner.nextInt();
             } else if (userInput == 3) {
                 System.out.println("Введите новую цель по количеству шагов");
                 int newGoal = scanner.nextInt();
                 tracker.changeTheGoal(newGoal);
+                printMenu();
+                userInput = scanner.nextInt();
             } else {
                 System.out.println("Извините, такой команды пока нет.");
+                printMenu();
+                userInput = scanner.nextInt();
             }
         }
         System.out.println("Программа завершена");
@@ -50,4 +55,4 @@ public class Main {
         System.out.println("3 - Изменить цель по количеству шагов в день");
         System.out.println("0 - Выйти из приложения.");
     }
-} 
+}
