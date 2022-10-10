@@ -9,27 +9,27 @@ public class Main {
 
         while (userInput != 0) {
             if (userInput == 1) {
-                System.out.println("Введите месяц, за который хотите ввести количество шагов. 0 - Январь," +
-                        " 1 - Февраль ... 11 - Декабрь");
+                System.out.println("Введите месяц, за который хотите ввести количество шагов. 1 - Январь," +
+                        " 2 - Февраль ... 12 - Декабрь");
                 int chosenMonth = scanner.nextInt();
                 System.out.println("Введите день, за который хотите ввести количество шагов (от 1 до 30)");
                 int chosenDay = scanner.nextInt();
                 System.out.println("Введите количество шагов");
                 int userSteps = scanner.nextInt();
-                tracker.saveStepsInDay(chosenMonth, chosenDay, userSteps);
+                tracker.saveStepsInDay((chosenMonth - 1), chosenDay, userSteps);
                 printMenu();
                 userInput = scanner.nextInt();
             } else if (userInput == 2) {
-                System.out.println("За какой месяц вы хотите получить статистику? 0 - январь, 1 - Февраль ..." +
-                        " 11 - Декабрь");
+                System.out.println("За какой месяц вы хотите получить статистику? 1 - январь, 2 - Февраль ..." +
+                        " 12 - Декабрь");
                 int monthStatistics = scanner.nextInt();
-                tracker.showStepsInDay(monthStatistics);
-                System.out.println("Общее количество шагов за месяц: " + tracker.sumMonthSteps(monthStatistics));
-                System.out.println("Максимальное пройденное количество шагов в месяце: " + tracker.getMaxSteps(monthStatistics));
-                System.out.println("Среднее количество шагов: " + tracker.getAverageSteps(monthStatistics));
-                System.out.println("Пройденная дистанция (в км): " + tracker.getDistance(monthStatistics));
-                System.out.println("Количество сожжённых килокалорий: " + tracker.getKilocalories(monthStatistics));
-                System.out.println("Ваша лучшая серия: " + tracker.getBestSeries(monthStatistics));
+                tracker.showStepsInDay((monthStatistics - 1));
+                System.out.println("Общее количество шагов за месяц: " + tracker.sumMonthSteps(monthStatistics - 1));
+                System.out.println("Максимальное пройденное количество шагов в месяце: " + tracker.getMaxSteps((monthStatistics - 1)));
+                System.out.println("Среднее количество шагов: " + tracker.getAverageSteps((monthStatistics - 1)));
+                System.out.println("Пройденная дистанция (в км): " + tracker.getDistance((monthStatistics - 1)));
+                System.out.println("Количество сожжённых килокалорий: " + tracker.getKilocalories((monthStatistics - 1)));
+                System.out.println("Ваша лучшая серия: " + tracker.getBestSeries((monthStatistics - 1)));
                 printMenu();
                 userInput = scanner.nextInt();
             } else if (userInput == 3) {
@@ -45,7 +45,6 @@ public class Main {
             }
         }
         System.out.println("Программа завершена");
-        return;
     }
 
     private static void printMenu() {
